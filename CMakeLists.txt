@@ -11,3 +11,4 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 add_subdirectory(lib)
 add_subdirectory(buffer)
+add_subdirectory(grace)
