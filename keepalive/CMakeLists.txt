@@ -1,0 +1,5 @@
+add_executable(keepalive_server keepalive_server.c)
+target_link_libraries(keepalive_server network)
+
+add_executable(keepalive_client keepalive_client.c)
+target_link_libraries(keepalive_client network)
