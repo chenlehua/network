@@ -10,6 +10,7 @@
 #include    <netinet/in.h>
 #include <arpa/inet.h>
 #include <stdarg.h>
+#include    <poll.h>
 
 
 #define    SERV_PORT      43211
@@ -28,5 +29,7 @@ int tcp_server(int port);
 int tcp_client(char *address, int port);
 
 size_t readline(int fd, char *buffer, size_t length);
+
+int tcp_server_listen(int port);
 
 #endif //NETWORK_COMMON_H

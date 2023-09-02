@@ -4,6 +4,20 @@
 #include "common.h"
 
 int tcp_server(int port) {
+    int listenfd = tcp_server_listen(port);
+
+    int connfd;
+    struct sockaddr_in client_addr;
+    socklen_t client_len = sizeof(client_addr);
+
+    if ((connfd = accept(listenfd, (struct sockaddr *) &client_addr, &client_len)) < 0) {
+        error(1, errno, "accept failed ");
+    }
+
+    return connfd;
+}
+
+int tcp_server_listen(int port) {
     int listenfd;
     listenfd = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -28,13 +42,5 @@ int tcp_server(int port) {
 
     signal(SIGPIPE, SIG_IGN);
 
-    int connfd;
-    struct sockaddr_in client_addr;
-    socklen_t client_len = sizeof(client_addr);
-
-    if ((connfd = accept(listenfd, (struct sockaddr *) &client_addr, &client_len)) < 0) {
-        error(1, errno, "accept failed ");
-    }
-
-    return connfd;
+    return listenfd;
 }
