@@ -19,6 +19,14 @@
 
 size_t read_n(int fd, void *buffer, size_t size);
 
+size_t read_message(int fd, char *buffer, size_t length);
+
 void error(int status, int err, char *fmt, ...);
+
+int tcp_server(int port);
+
+int tcp_client(char *address, int port);
+
+size_t readline(int fd, char *buffer, size_t length);
 
 #endif //NETWORK_COMMON_H

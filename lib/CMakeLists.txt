@@ -1,4 +1,4 @@
-set(network_lib read.c log.c ../grace/grace_server.c ../grace/grace_client.c ../keepalive/keepalive_server.c ../keepalive/keepalive_client.c ../keepalive/message_object.h)
+set(network_lib read.c log.c tcp_server.c tcp_client.c)
 
 add_library(network ${network_lib})
 
