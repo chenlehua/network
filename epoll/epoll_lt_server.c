@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
     }
 
     /* Buffer where events are returned */
-    events = calloc(MAXEVENTS, sizeof(event));~
+    events = calloc(MAXEVENTS, sizeof(event));
 
     while (1) {
         n = epoll_wait(efd, events, MAXEVENTS, -1);

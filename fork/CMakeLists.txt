@@ -1,0 +1,2 @@
+add_executable(fork_server fork_server.c)
+target_link_libraries(fork_server network)
