@@ -16,6 +16,8 @@
 #include    <signal.h>
 #include <sys/wait.h>
 #include    <pthread.h>
+#include    <sys/uio.h>        /* for iovec{} and readv/writev */
+
 
 
 #define    SERV_PORT      43211
