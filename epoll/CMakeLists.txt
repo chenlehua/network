@@ -1,2 +1,8 @@
 add_executable(epoll_server epoll_server.c)
 target_link_libraries(epoll_server network)
+
+add_executable(epoll_et_server epoll_et_server.c)
+target_link_libraries(epoll_et_server network)
+
+add_executable(epoll_lt_server epoll_lt_server.c)
+target_link_libraries(epoll_lt_server network)

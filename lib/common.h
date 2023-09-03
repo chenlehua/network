@@ -2,6 +2,7 @@
 #define NETWORK_COMMON_H
 
 #include    <strings.h>
+#include    <string.h>
 #include    <unistd.h>
 #include    <errno.h>
 #include    <stdio.h>
@@ -12,6 +13,7 @@
 #include <stdarg.h>
 #include    <poll.h>
 #include    <fcntl.h>        /* for nonblocking */
+#include    <signal.h>
 
 
 #define    SERV_PORT      43211

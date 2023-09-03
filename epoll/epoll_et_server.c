@@ -1,18 +1,7 @@
-#include "lib/common.h"
 #include  <sys/epoll.h>
+#include "lib/common.h"
 
 #define MAXEVENTS 128
-
-
-char rot13_char(char c) {
-    if ((c >= 'a' && c <= 'm') || (c >= 'A' && c <= 'M'))
-        return c + 13;
-    else if ((c >= 'n' && c <= 'z') || (c >= 'N' && c <= 'Z'))
-        return c - 13;
-    else
-        return c;
-}
-
 
 int main(int argc, char **argv) {
     int listen_fd, socket_fd;
@@ -24,7 +13,6 @@ int main(int argc, char **argv) {
     listen_fd = tcp_nonblocking_server_listen(SERV_PORT);
 
     efd = epoll_create1(0);
-
     if (efd == -1) {
         error(1, errno, "epoll create failed");
     }
@@ -35,6 +23,7 @@ int main(int argc, char **argv) {
         error(1, errno, "epoll_ctl add listen fd failed");
     }
 
+    /* Buffer where events are returned */
     events = calloc(MAXEVENTS, sizeof(event));
 
     while (1) {
@@ -65,33 +54,11 @@ int main(int argc, char **argv) {
             } else {
                 socket_fd = events[i].data.fd;
                 printf("get event on socket fd == %d \n", socket_fd);
-                while (1) {
-                    char buf[512];
-                    if ((n = read(socket_fd, buf, sizeof(buf))) < 0) {
-                        if (errno != EAGAIN) {
-                            error(1, errno, "read error");
-                            close(socket_fd);
-                        }
-                        break;
-                    } else if (n == 0) {
-                        close(socket_fd);
-                        break;
-                    } else {
-                        for (i = 0; i < n; ++i) {
-                            buf[i] = rot13_char(buf[i]);
-                        }
-                        if (write(socket_fd, buf, n) < 0) {
-                            error(1, errno, "write error");
-                        }
-                    }
-                }
             }
         }
-
-
-
     }
 
     free(events);
     close(listen_fd);
+
 }
