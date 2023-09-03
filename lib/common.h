@@ -15,6 +15,7 @@
 #include    <fcntl.h>        /* for nonblocking */
 #include    <signal.h>
 #include <sys/wait.h>
+#include    <pthread.h>
 
 
 #define    SERV_PORT      43211
