@@ -11,6 +11,7 @@
 #include <arpa/inet.h>
 #include <stdarg.h>
 #include    <poll.h>
+#include    <fcntl.h>        /* for nonblocking */
 
 
 #define    SERV_PORT      43211
@@ -31,5 +32,11 @@ int tcp_client(char *address, int port);
 size_t readline(int fd, char *buffer, size_t length);
 
 int tcp_server_listen(int port);
+
+int tcp_nonblocking_server_listen(int port);
+
+void make_nonblocking(int fd);
+
+
 
 #endif //NETWORK_COMMON_H

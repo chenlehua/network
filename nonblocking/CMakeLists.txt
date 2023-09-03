@@ -1,0 +1,2 @@
+add_executable(nblock_server nonblocking_server.c)
+target_link_libraries(nblock_server network)
