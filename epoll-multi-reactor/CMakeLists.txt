@@ -1,0 +1,2 @@
+add_executable(epoll_multi_reactor_server epoll_multi_reactor_server.c)
+target_link_libraries(epoll_multi_reactor_server network)

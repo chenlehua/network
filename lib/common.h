@@ -1,6 +1,7 @@
 #ifndef NETWORK_COMMON_H
 #define NETWORK_COMMON_H
 
+#include "config.h"
 #include    <strings.h>
 #include    <string.h>
 #include    <unistd.h>

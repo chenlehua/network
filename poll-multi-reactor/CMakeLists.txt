@@ -1,0 +1,2 @@
+add_executable(poll_multi_reactor_server poll_multi_reactor_server.c)
+target_link_libraries(poll_multi_reactor_server network)
